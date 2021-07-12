@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/cameraFragment">
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="io.intelligible.intelligentocr.CameraFragment"
+        android:label="CameraFragment" >
+        <action
+            android:id="@+id/action_cameraFragment_to_infoDisplayFragment"
+            app:destination="@id/infoDisplayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoDisplayFragment"
+        android:name="io.intelligible.intelligentocr.InfoDisplayFragment"
+        android:label="InfoDisplayFragment" >
+        <argument android:name="text"
+            app:argType="string" />
+    </fragment>
+</navigation>
