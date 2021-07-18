@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phone_number_needed">Name and Phone number are mandatory</string>
+</resources>

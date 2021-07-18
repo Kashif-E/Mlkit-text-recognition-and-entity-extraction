@@ -7,7 +7,7 @@ import android.util.Log
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizerOptions
-import io.intelligible.intelligentocr.CameraTextAnalyzerListener
+import io.intelligible.intelligentocr.ui.CameraTextAnalyzerListener
 
 
 class TextAnalyser(

@@ -1,4 +1,4 @@
-package io.intelligible.intelligentocr
+package io.intelligible.intelligentocr.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,6 +13,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.google.mlkit.nl.entityextraction.EntityExtractorOptions
 import com.snatik.storage.Storage
 import io.intelligible.intelligentocr.constants.Constants.Companion.RATIO_16_9_VALUE
 import io.intelligible.intelligentocr.constants.Constants.Companion.RATIO_4_3_VALUE
@@ -25,36 +27,53 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 import kotlin.math.abs
+import   io.intelligible.intelligentocr.R
+import io.intelligible.intelligentocr.customviews.ProgressDialog
+import io.intelligible.intelligentocr.extensions.snack
 import kotlin.math.max
+
 import kotlin.math.min
 
-typealias CameraTextAnalyzerListener = (text: String) -> Unit
 
+typealias CameraTextAnalyzerListener = (text: String) -> Unit
+typealias languageChangeListener = (language : String ) -> Unit
 class CameraFragment : Fragment(R.layout.fragment_camera) {
 
     private lateinit var imageCapture: ImageCapture
     private lateinit var cameraControl: CameraControl
     private lateinit var cameraInfo: CameraInfo
+    private var currentLanguage = EntityExtractorOptions.ENGLISH
     private val executor by lazy {
         Executors.newSingleThreadExecutor()
     }
+    private lateinit var progressDialog: ProgressDialog
     lateinit var binding: FragmentCameraBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentCameraBinding.bind(view)
+
+        progressDialog = ProgressDialog(requireContext(), false)
+        binding.btnchangeLanguage.setOnClickListener {
+            BsLanguage.newInstance {
+                currentLanguage = it
+              binding.root.snack("Language has been changed to $it", getString(R.string.ok) )
+            }.show(
+                childFragmentManager,
+                BsLanguage::class.java.simpleName
+            )
+        }
+
         binding.viewFinder.post {
             startCamera()
         }
         binding.ivImageCapture.setOnClickListener {
-            it.isClickable = false
-            binding.progressBar2.bringToFront()
-            binding.progressBar2.visibility = View.VISIBLE
+            progressDialog.show()
             takePicture()
         }
 
     }
+
 
     @Suppress("SameParameterValue")
     private fun createFile(baseFolder: File, format: String, extension: String) =
@@ -84,23 +103,24 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
                     // sending the captured image for analysis
                     GlobalScope.launch(Dispatchers.IO) {
                         TextAnalyser({ result ->
-                            if (result.isNullOrEmpty()) {
+                            if (result.isEmpty()) {
 
-                                binding.progressBar2.visibility = View.INVISIBLE
+                                progressDialog.dismiss()
                                 Toast.makeText(
                                     requireContext(),
                                     "No Text Detected",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                binding.ivImageCapture.isClickable = true
+
 
                             } else {
-                                binding.ivImageCapture.isClickable = true
-                                binding.progressBar2.visibility = View.INVISIBLE
+
+                                progressDialog.dismiss()
                                 findNavController().navigate(
                                     R.id.action_cameraFragment_to_infoDisplayFragment,
                                     Bundle().apply {
                                         putString("text", result)
+                                        putString("language", currentLanguage)
                                     })
                             }
 
@@ -111,7 +131,8 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
                 override fun onError(exception: ImageCaptureException) {
 
-                    Log.e("error", exception.localizedMessage)
+                    progressDialog.dismiss()
+                    Log.e("error", exception.localizedMessage!!)
                 }
             })
     }
@@ -203,4 +224,9 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
             .build()
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.root.snack(getString(R.string.pointing_message), getString(R.string.ok))
+
+    }
 }

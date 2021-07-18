@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:background="@color/white"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:dividerHeight="0.0px"
+        android:elevation="80dp"
+        android:fadingEdgeLength="80dp"
+        android:outlineAmbientShadowColor="@color/blue"
+        android:outlineSpotShadowColor="@color/blue"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/progressBarDialog"
+                style="@style/SpinKitView.Large.DoubleBounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.362" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvProgressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/extracting_text"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:fontFamily="@font/muli_semibold"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/progressBarDialog"
+                app:layout_constraintStart_toStartOf="@+id/progressBarDialog"
+                app:layout_constraintTop_toBottomOf="@+id/progressBarDialog"
+                tools:text="Please Wait" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

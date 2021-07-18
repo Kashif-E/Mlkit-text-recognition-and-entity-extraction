@@ -4,18 +4,21 @@
     app:startDestination="@id/cameraFragment">
 
     <fragment
+        android:id="@+id/infoDisplayFragment"
+        android:name="io.intelligible.intelligentocr.ui.InfoDisplayFragment"
+        android:label="InfoDisplayFragment" >
+        <argument android:name="text"
+            app:argType="string" />
+        <argument
+            android:name="language"
+            app:argType="string" />
+    </fragment>
+    <fragment
         android:id="@+id/cameraFragment"
-        android:name="io.intelligible.intelligentocr.CameraFragment"
+        android:name="io.intelligible.intelligentocr.ui.CameraFragment"
         android:label="CameraFragment" >
         <action
             android:id="@+id/action_cameraFragment_to_infoDisplayFragment"
             app:destination="@id/infoDisplayFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/infoDisplayFragment"
-        android:name="io.intelligible.intelligentocr.InfoDisplayFragment"
-        android:label="InfoDisplayFragment" >
-        <argument android:name="text"
-            app:argType="string" />
     </fragment>
 </navigation>

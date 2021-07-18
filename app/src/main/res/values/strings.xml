@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Intelligent OCR</string>
+    <string name="pointing_message">Point towards the card and take a picture</string>
+    <string name="ok">OK</string>
+    <string name="extracting_text">Extracting Text</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="home_phone">Home Phone</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="rawText">Raw Text</string>
+    <string name="url">URL</string>
+    <string name="date_amp_time"><![CDATA[Date & Time]]></string>
+    <string name="save_as_contact">Save as Contact</string>
+    <string name="phone_number_needed">Name and Phone number are mandatory</string>
 </resources>

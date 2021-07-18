@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/muli_extralight</item>
+        <item>@font/muli_semibold</item>
+    </array>
+</resources>
