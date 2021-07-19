@@ -52,7 +52,8 @@ class InfoDisplayFragment : Fragment(R.layout.fragment_info_display) {
                 .putExtra(
                     ContactsContract.Intents.Insert.EMAIL_TYPE,
                     CommonDataKinds.Email.TYPE_WORK
-                )
+                ).putExtra(
+                    ContactsContract.Intents.Insert.NAME, binding.tvname.text.toString())
                 .putExtra(
                     ContactsContract.Intents.Insert.PHONE,
                     binding.tvMobile.text.toString()
