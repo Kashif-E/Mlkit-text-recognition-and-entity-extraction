@@ -9,7 +9,11 @@ Libraries used:
 Medium article: https://kashif-mehmood-km.medium.com/entity-extraction-from-text-on-android-using-ml-kit-in-less-than-5-minutes-7efef3ee2e20
 
 
+#Note: In order to use different language you have to use cloud mlkit rather than on device ml
 
-https://user-images.githubusercontent.com/61690178/125285397-0b296980-e334-11eb-8980-3b7501c0c08b.mp4
+
+https://user-images.githubusercontent.com/61690178/128365608-c988a0ee-f41b-459d-b452-74818bd9ba53.mp4
+
+
 
 
