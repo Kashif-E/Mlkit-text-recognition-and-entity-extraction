@@ -6,7 +6,7 @@ Libraries used:
 #camerax for taking picture
 #EntityExtraction for extracting entities from text
 
-Medium article: https://kashif-mehmood-km.medium.com/entity-extraction-from-text-on-android-using-ml-kit-in-less-than-5-minutes-7efef3ee2e20
+Medium article: https://towardsdev.com/advanced-entity-extraction-and-ocr-with-mlkit-on-android-2b3b768c094a
 
 
 #Note: In order to use different language you have to use cloud mlkit rather than on device ml
