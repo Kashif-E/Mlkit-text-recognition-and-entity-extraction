@@ -1,6 +1,8 @@
 # IntelligentOCR
 
-Made this #OCR app with entity extraction from the recognised text,
+In this example, MLKIt Text recognition and entity extraction api is used to build a card reader app. However, there can be multiple use case of this that you can build using these two apis.
+
+Buy me a cofeee: <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="kashifmehmood" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 Libraries used:
 #firebase #MLKit for #textrecognition
 #camerax for taking picture
